@@ -1,0 +1,62 @@
+﻿<Window x:Class="MyStaffWpf2.View.EditStaffWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:MyStaffWpf2.View"
+        mc:Ignorable="d"
+        Title="Редактировать сотрудника" Height="600" Width="800"
+        Name="editSt">
+    <Grid Background="#ffdadada">
+
+        <Border BorderBrush="Black" MinWidth="400" MaxWidth="500" Background="#fff" BorderThickness="1" Margin="15" VerticalAlignment="Center" Padding="30">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBox x:Name="lastNameBox" 
+                         materialDesign:HintAssist.Hint="Введите фамилию"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Text="{Binding NewStaffLastName}"/>
+                
+                <TextBox x:Name="firstNameBox"
+                         materialDesign:HintAssist.Hint="Введите имя"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Text="{Binding NewStaffFirstName}"/>
+                
+                <TextBox x:Name="middleNameBox" 
+                         materialDesign:HintAssist.Hint="Введите Отчество"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Text="{Binding NewStaffMiddleName}"/>
+                
+                <ComboBox x:Name="positionBox" 
+                          materialDesign:HintAssist.Hint="Выбирете должность" 
+                          Style="{StaticResource MaterialDesignComboBox}"
+                          ItemsSource="{Binding AllPositions}"
+                          SelectedItem="{Binding NewStaffPosition}"
+                          DisplayMemberPath="Name"/>
+                
+                <TextBox x:Name="dateOfBrithBox" 
+                         materialDesign:HintAssist.Hint="Введите день рождения" 
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Text="{Binding NewStaffDateOfBrith}"/>
+                
+                <TextBox x:Name="phoneBox" 
+                         materialDesign:HintAssist.Hint="Введите номер телефона" 
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Text="{Binding NewStaffPhone}"/>
+                
+                <TextBox x:Name="emailBox" 
+                         materialDesign:HintAssist.Hint="Введите электронную почту" 
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Text="{Binding NewStaffEmail}"/>
+                
+                <Button Margin="0 20" 
+                        Content="Сохранить изменения"
+                        Command="{Binding EditItem}"
+                        CommandParameter="{Binding ElementName=editSt}"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
